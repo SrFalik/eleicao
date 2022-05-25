@@ -28,12 +28,10 @@ public class Presidente extends Candidato{
 
     @Override
     public String toString() {
-        return "Presidente{" +
-                "nome='" + getNome() + '\'' +
-                ", vicePresidente='" + vicePresidente + '\'' +
-                ", partido='" + getPartido() + '\'' +
-                ", numero=" + getNumero() +
-                ", idade=" + getIdade() +
-                "} ";
+        return  "Nome: " + getNome() +
+                "\nVice presidente: " + vicePresidente +
+                "\nPartido: " + getPartido() +
+                "\nNumero: " + getNumero() +
+                "\nIdade: " + getIdade();
     }
 }
