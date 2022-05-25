@@ -131,11 +131,11 @@ public class Main {
                     ganhador = i;
                 }
             }
-            System.out.print("VENCEDOR: " + list2.get(ganhador));
-            System.out.println("Escrevendo relatório da votação em" + System.getProperty("user.home") + "\\Desktop\\relatorio.txt");
+            System.out.println("VENCEDOR - " + list2.get(ganhador).getNome());
+            System.out.println("\nEscrevendo relatório da votação em " + System.getProperty("user.home") + "\\Desktop\\relatorio.txt");
         } else {
-            System.out.print("VENCEDOR: " + list.get(ganhador));
-            System.out.println("Escrevendo relatório da votação em" + System.getProperty("user.home") + "\\Desktop\\relatorio.txt");
+            System.out.println("VENCEDOR - " + list.get(ganhador).getNome());
+            System.out.println("\nEscrevendo relatório da votação em " + System.getProperty("user.home") + "\\Desktop\\relatorio.txt");
         }
         String pathOut = System.getProperty("user.home") + "\\Desktop\\relatorio.txt";
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(pathOut))) {
@@ -150,8 +150,10 @@ public class Main {
                 bw.newLine();
                 bw.write(p.toString());
                 bw.newLine();
+                contador++;
             }
             if (segundoTurno) {
+                bw.newLine();
                 bw.write("Candidatos segundo turno:");
                 contador = 1;
                 for (Presidente p : list2) {
@@ -160,10 +162,13 @@ public class Main {
                     bw.newLine();
                     bw.write(p.toString());
                     bw.newLine();
+                    contador++;
                 }
-                bw.write("Vencedor:" + list2.get(ganhador));
+                bw.newLine();
+                bw.write("Vencedor: " + list2.get(ganhador).getNome());
             } else {
-                bw.write("Vencedor:" + list.get(ganhador));
+                bw.newLine();
+                bw.write("Vencedor: " + list.get(ganhador).getNome());
             }
         } catch (IOException e) {
             throw new RuntimeException(e);

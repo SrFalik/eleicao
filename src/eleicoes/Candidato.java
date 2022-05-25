@@ -56,7 +56,7 @@ public abstract class Candidato {
     }
 
     public void addVoto() {
-        setVotos(votos++);
+        votos++;
     }
 
 }
