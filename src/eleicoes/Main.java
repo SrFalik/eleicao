@@ -126,17 +126,28 @@ public class Main {
                 }
             }
             ganhador = 0;
-            for (int i = 0; i < list2.size(); i++) {
-                if (list2.get(i).getVotos() > list2.get(ganhador).getVotos()) {
-                    ganhador = i;
+            aux = 1;
+                if (list2.get(aux).getVotos() > list2.get(ganhador).getVotos()) {
+                    ganhador = aux;
+            } else if (list2.get(aux).getVotos() == list2.get(ganhador).getVotos()) {
+                    System.out.println("VOTO DE MINERVA!!");
+                    System.out.println("O desenvolvedor, Felipe, será o responsável pelo desempate desta eleição!");
+                    System.out.print("Digite o seu voto:");
+                    voto = sc.nextInt();
+                    for (Presidente p : list2) {
+                        if (p.getNumero() == voto) {
+                            p.addVoto();
+                        }
+                    }
+                    if (list2.get(aux).getVotos() > list2.get(ganhador).getVotos()) {
+                        ganhador = aux;
+                    }
                 }
-            }
             System.out.println("VENCEDOR - " + list2.get(ganhador).getNome());
-            System.out.println("\nEscrevendo relatório da votação em " + System.getProperty("user.home") + "\\Desktop\\relatorio.txt");
         } else {
             System.out.println("VENCEDOR - " + list.get(ganhador).getNome());
-            System.out.println("\nEscrevendo relatório da votação em " + System.getProperty("user.home") + "\\Desktop\\relatorio.txt");
         }
+        System.out.println("\nEscrevendo relatório da votação em " + System.getProperty("user.home") + "\\Desktop\\relatorio.txt");
         String pathOut = System.getProperty("user.home") + "\\Desktop\\relatorio.txt";
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(pathOut))) {
 
@@ -174,4 +185,9 @@ public class Main {
             throw new RuntimeException(e);
         }
     }
+
+    public void lerArquivo() {
+
+    }
+
 }
