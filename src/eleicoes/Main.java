@@ -8,7 +8,7 @@ public class Main {
         Locale.setDefault(Locale.US);
         List<Presidente> list = new ArrayList<>();
         Scanner sc = new Scanner(System.in);
-        int contador = 1;
+        int contador;
         System.out.println("Bem vindo ao sistema eleitoral brasileiro.");
         System.out.println();
         System.out.println("Você deseja inserir os candidatos por um arquivo de texto? (S/N)");
@@ -18,7 +18,9 @@ public class Main {
             try (BufferedReader br = new BufferedReader(new FileReader(path))) {
                 br.lines().forEach(linha -> {
                     String[] info = linha.split(",");
+                    int nmr = 0;
                     Presidente p = new Presidente(info[0], info[1], Integer.parseInt(info[2]), Integer.parseInt(info[3]), info[4]);
+
                     if (p.eleg()) {
                         list.add(p);
                     }
@@ -41,6 +43,21 @@ public class Main {
                 partido = sc.next();
                 System.out.print("Insira o número do candidato: ");
                 numero = sc.nextInt();
+                    for (Presidente p : list) {
+                        if (numero == p.getNumero()) {
+                            System.out.println("Número já existente, favor digitar outro");
+                            numero = sc.nextInt();
+                            break;
+                        }
+                    }
+                for (Presidente p : list) {
+                    if (numero == p.getNumero()) {
+                        numero = (int) (Math.random() * 1000);
+                        System.out.println("Número duplicado 2 vezes, número novo gerado: " + numero);
+                        break;
+                    }
+                }
+
                 System.out.print("Insira a idade do candidato: ");
                 idade = sc.nextInt();
                 System.out.print("Insira o nome do vice presidente: ");
@@ -97,7 +114,7 @@ public class Main {
         boolean segundoTurno = false;
         int aux = 0;
         for (int i = 0; i < list.size(); i++) {
-            if (i != ganhador && list.get(i).getVotos() == list.get(ganhador).getVotos()) {
+            if (i != ganhador && list.get(i).getVotos().equals(list.get(ganhador).getVotos())) {
                 segundoTurno = true;
                 aux = i;
                 break;
@@ -129,7 +146,7 @@ public class Main {
             aux = 1;
                 if (list2.get(aux).getVotos() > list2.get(ganhador).getVotos()) {
                     ganhador = aux;
-            } else if (list2.get(aux).getVotos() == list2.get(ganhador).getVotos()) {
+            } else if (list2.get(aux).getVotos().equals(list2.get(ganhador).getVotos())) {
                     System.out.println("VOTO DE MINERVA!!");
                     System.out.println("O desenvolvedor, Felipe, será o responsável pelo desempate desta eleição!");
                     System.out.print("Digite o seu voto:");
