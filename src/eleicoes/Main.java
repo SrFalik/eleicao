@@ -203,8 +203,4 @@ public class Main {
         }
     }
 
-    public void lerArquivo() {
-
-    }
-
 }
