@@ -164,8 +164,8 @@ public class Main {
         } else {
             System.out.println("VENCEDOR - " + list.get(ganhador).getNome());
         }
-        System.out.println("\nEscrevendo relatório da votação em " + System.getProperty("user.home") + "\\Desktop\\relatorio.txt");
-        String pathOut = System.getProperty("user.home") + "\\Desktop\\relatorio.txt";
+        System.out.println("\nEscrevendo relatório da votação em " + System.getProperty("user.home") + "/Desktop/relatorio.txt");
+        String pathOut = System.getProperty("user.home") + "/Desktop/relatorio.txt";
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(pathOut))) {
 
             bw.write("Relatorio da eleição:");
@@ -199,7 +199,7 @@ public class Main {
                 bw.write("Vencedor: " + list.get(ganhador).getNome());
             }
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            System.out.println(e.getMessage());
         }
     }
 
