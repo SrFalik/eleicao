@@ -1,0 +1,9 @@
+Bozonaro,PL,22,67,Mourinho
+Coroné,PDT,12,64,Quatia
+ET,Rede,18,64,Duardo
+Apertada,PSDB,45,64,Leitão
+Molusco,PT,13,76,Merenda
+Juiz,UNIAO,44,49,Mamaechorei
+Bolo,PSOL,50,39,Guajujura
+Glória,PATRIOTAS,51,42,Suelen
+Amoeba,NOVO,30,56,Professor
